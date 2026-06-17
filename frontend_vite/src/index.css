@@ -1,0 +1,171 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand: #007AFF;
+  --color-brand-light: #2997FF;
+  --color-brand-dark: #0058B9;
+  --color-brand-red: #FF3B30;
+  --color-secondary: #86868B;
+  --color-accent-red: #FF3B30;
+  --color-page-bg: #F5F5F7;
+  --color-card-border: #D2D2D7;
+  --color-sidebar: #FBFBFD;
+
+  --color-level-beginner: #FF3B30;
+  --color-level-intermediate: #FF9500;
+  --color-level-advanced: #007AFF;
+  --color-level-expert: #34C759;
+
+  --color-status-active: #34C759;
+  --color-status-pending: #FF9500;
+  --color-status-rejected: #FF3B30;
+  --color-status-review: #007AFF;
+}
+
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', system-ui, sans-serif;
+  background: var(--color-page-bg);
+  color: #1d1d1f;
+  letter-spacing: -0.022em;
+  line-height: 1.47059;
+}
+
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes subtle-float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-4px); }
+}
+
+.animate-gradient {
+  animation: gradient-shift 8s ease infinite;
+  background-size: 300% 300%;
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+}
+
+.glass-dark {
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.card-hover {
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px -8px rgba(0, 0, 0, 0.12), 0 4px 12px -4px rgba(0, 0, 0, 0.05);
+}
+
+.logo-gradient {
+  background: linear-gradient(135deg, #007AFF 0%, #FF3B30 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.12);
+  border-radius: 4px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.22);
+  background-clip: content-box;
+}
+
+/* Apple-style Range Slider */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 6px;
+  border-radius: 3px;
+  background: linear-gradient(to right, #E5E5EA 0%, #E5E5EA 100%);
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: white;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.1);
+  border: 0.5px solid rgba(0, 0, 0, 0.04);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2), 0 2px 4px rgba(0, 0, 0, 0.12);
+}
+
+input[type="range"]::-webkit-slider-thumb:active {
+  transform: scale(0.98);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2), 0 1px 2px rgba(0, 0, 0, 0.15);
+}
+
+input[type="range"]::-moz-range-thumb {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: white;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.1);
+  border: 0.5px solid rgba(0, 0, 0, 0.04);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+input[type="range"]::-moz-range-thumb:hover {
+  transform: scale(1.1);
+}
+
+input[type="range"]::-moz-range-track {
+  width: 100%;
+  height: 6px;
+  border-radius: 3px;
+  background: #E5E5EA;
+}
+
+/* Gradient track based on value */
+input[type="range"].range-beginner {
+  background: linear-gradient(to right, #FF3B30 0%, #FF3B30 var(--range-progress, 30%), #E5E5EA var(--range-progress, 30%), #E5E5EA 100%);
+}
+
+input[type="range"].range-intermediate {
+  background: linear-gradient(to right, #FF9500 0%, #FF9500 var(--range-progress, 50%), #E5E5EA var(--range-progress, 50%), #E5E5EA 100%);
+}
+
+input[type="range"].range-advanced {
+  background: linear-gradient(to right, #007AFF 0%, #007AFF var(--range-progress, 70%), #E5E5EA var(--range-progress, 70%), #E5E5EA 100%);
+}
+
+input[type="range"].range-expert {
+  background: linear-gradient(to right, #34C759 0%, #34C759 var(--range-progress, 90%), #E5E5EA var(--range-progress, 90%), #E5E5EA 100%);
+}
